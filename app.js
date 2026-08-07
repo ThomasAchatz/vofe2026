@@ -153,8 +153,8 @@ function renderHeute(account) {
 
   wrap.innerHTML = `
     ${devPickerHtml(dayIdx)}
-    ${renderTeamOverviewCard(dayIdx, account)}
     ${heroHtml}
+    ${renderTeamOverviewCard(dayIdx, account)}
     <div class="eyebrow">Wichtig heute</div>
     ${WICHTIGE_INFOS.slice(0, 1).map(infoCard).join("")}
     <div class="card">
@@ -206,15 +206,18 @@ function renderTeamOverviewCard(dayIdx, account) {
   }).join("");
 
   return `
-    <div class="card">
-      <h3 class="title" style="margin-bottom:10px;">Alle Teams – ${todayDay.weekday} &amp; ${tomorrowDay ? tomorrowDay.weekday : "danach"}</h3>
-      <div style="overflow-x:auto;">
+    <details class="card overview-details">
+      <summary class="overview-summary">
+        <span>Alle Teams – ${todayDay.weekday} &amp; ${tomorrowDay ? tomorrowDay.weekday : "danach"}</span>
+        ${icon("chevron", 16, "var(--text-mute)", 2)}
+      </summary>
+      <div style="overflow-x:auto; margin-top:12px;">
         <table class="overview-table">
           <thead><tr><th>Team</th><th>Heute</th><th>Morgen</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>
-    </div>`;
+    </details>`;
 }
 
 function devPickerHtml(dayIdx) {
@@ -370,6 +373,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("team-switch-overlay").addEventListener("click", e => {
     if (e.target.id === "team-switch-overlay") closeTeamSwitch();
   });
+  document.getElementById("home-link").addEventListener("click", () => switchTab("heute"));
 
   const session = getSession();
   const account = session ? resolveAccount(session.code) : null;

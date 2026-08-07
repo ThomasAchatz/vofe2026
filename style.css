@@ -44,7 +44,7 @@ button { font-family: inherit; }
   width: 38px; height: 38px; border-radius: 10px; border: 1.4px solid var(--messing-hell);
   display: flex; align-items: center; justify-content: center;
   font-family: Georgia, serif; font-weight: 700; font-size: 19px; color: var(--messing-hell);
-  flex-shrink: 0;
+  flex-shrink: 0; cursor: pointer;
 }
 .brand-name { font-size: 10.5px; letter-spacing: 2.6px; font-weight: 700; text-transform: uppercase; color: var(--messing-hell); opacity: .95; }
 .brand-team { font-family: Georgia, serif; font-size: 20px; font-weight: 700; margin-top: 1px; }
@@ -160,10 +160,19 @@ p.desc { font-size: 13px; margin: 0; color: var(--text-mute); line-height: 1.45;
 .switch-item-code { font-size: 12px; font-weight: 700; color: var(--messing); }
 
 /* ---------- Team-Übersicht (Heute & Morgen) ---------- */
+.overview-details { padding: 14px 18px; }
+.overview-details[open] { padding-bottom: 16px; }
+.overview-summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; font-weight: 700; color: var(--text-mute);
+}
+.overview-summary::-webkit-details-marker { display: none; }
+.overview-summary svg { transition: transform .15s ease; flex-shrink: 0; }
+.overview-details[open] .overview-summary svg { transform: rotate(90deg); }
 .overview-table { width: 100%; border-collapse: collapse; }
 .overview-table th { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-mute); text-align: left; padding: 0 6px 8px 6px; font-weight: 700; }
 .overview-table th:not(:first-child) { text-align: right; }
-.overview-table td { padding: 8px 6px; font-size: 12.5px; border-top: 1px solid var(--linie); }
+.overview-table td { padding: 7px 6px; font-size: 12px; border-top: 1px solid var(--linie); }
 .overview-table td:not(:first-child) { text-align: right; font-weight: 700; }
 .overview-table tr.is-you td { color: var(--tanne); }
 .overview-table td.team-name { font-weight: 600; }
