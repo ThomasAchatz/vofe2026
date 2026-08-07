@@ -1,30 +1,43 @@
 # Zelt Weckmann – Helfer-App
 
-Statische Web-App, kein Backend, kein Build-Schritt.  Läuft direkt aus   
+Statische Web-App, kein Backend, kein Build-Schritt. Läuft direkt aus
 diesem Repo über GitHub Pages (oder jeden anderen Static Host).
+
+**Wichtig:** Alle Dateien liegen bewusst flach im Repo-Root (keine
+Unterordner wie `css/` oder `js/`) – das passt zur Art, wie Dateien
+hier per Drag&Drop hochgeladen werden. Bitte beim nächsten Update
+genauso hochladen: nicht in Unterordner packen, sondern alle Dateien
+direkt ins Root-Verzeichnis ziehen.
 
 ## Dateien in diesem Repo
 
 ```
 index.html          Grundgerüst (Login + App)
-css/style.css        Design (Farben, Layout)
-js/data.js            <-- HIER passt du täglich Inhalte an
-js/app.js            App-Logik (i.d.R. nicht anfassen)
+style.css            Design (Farben, Layout)
+data.js               <-- HIER passt du täglich Inhalte an
+app.js               App-Logik (i.d.R. nicht anfassen)
 manifest.json        Für "Zum Home-Bildschirm hinzufügen"
 sw.js                Offline-Caching fürs Homescreen-Icon
-assets/speisekarte.pdf   Platzhalter – durch echte PDF ersetzen
-assets/spickzettel.pdf   Platzhalter – durch echte PDF ersetzen
-icons/icon-192.png, icon-512.png   App-Icon
+speisekarte.pdf       Durch echte PDF ersetzen (fehlt aktuell im Repo!)
+spickzettel.pdf       Durch echte PDF ersetzen
+icon-192.png, icon-512.png   App-Icon
 ```
 
 ## Was du regelmäßig bearbeitest
 
-Alles Tages-Aktuelle steht in **`js/data.js`**, z. B.:
+Alles Tages-Aktuelle steht in **`data.js`**, z. B.:
 
 - `TAGESGERICHT` – ein Eintrag pro Datum
 - `SONDERAKTION_DETAILS` – Zusatztext zum Tages-Highlight (z. B. Kindertag, Menzl-Abend)
 - `WICHTIGE_INFOS` – Liste, die auf "Heute" und im Infos-Tab erscheint
 - `TEAMS` – Zuordnung Team ↔ Rotationsnummer **(bitte einmal prüfen, siehe Kommentar in der Datei)**
+- `STORNOS` – Liste stornierter Gerichte, ein Eintrag pro Storno:
+  ```js
+  { bedienerNr: 24, gericht: "Schweinebraten", zeit: "14:30" },
+  ```
+  Rein statisch: du trägst abends ein, was storniert wurde, committest
+  die Datei – neueste Einträge erscheinen automatisch oben in der App.
+  Kein Login, kein Formular, kein Cloud-Speicher nötig.
 
 Einfach die Datei bearbeiten, committen, pushen – fertig.
 

@@ -141,8 +141,8 @@ const SONDERAKTION_DETAILS = {
 // 7) DOWNLOADS
 // -------------------------------------------------------------------
 const DOWNLOADS = {
-  speisekarte: "assets/speisekarte.pdf",
-  spickzettel: "assets/spickzettel.pdf",
+  speisekarte: "speisekarte.pdf",
+  spickzettel: "spickzettel.pdf",
 };
 
 // -------------------------------------------------------------------
@@ -152,3 +152,14 @@ const WETTER_CONFIG = {
   latitude: 48.8809,
   longitude: 12.5731,
 };
+
+// -------------------------------------------------------------------
+// 9) STORNOS
+// -------------------------------------------------------------------
+// Rein statische Liste – du trägst hier abends ein, was storniert wurde,
+// committest die Datei, fertig. Kein Login/Formular in der App nötig.
+// bedienerNr: 1-60, gericht: freier Text, zeit: optional (z.B. "14:30")
+const STORNOS = [
+  // { bedienerNr: 24, gericht: "Schweinebraten", zeit: "14:30" },
+  // { bedienerNr: 7,  gericht: "Wiener mit Kartoffelsalat", zeit: "18:05" },
+];

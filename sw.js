@@ -2,9 +2,9 @@ const CACHE = "weckmann-v1";
 const ASSETS = [
   "./",
   "./index.html",
-  "./css/style.css",
-  "./js/app.js",
-  "./js/data.js",
+  "./style.css",
+  "./app.js",
+  "./data.js",
   "./manifest.json",
 ];
 

@@ -16,6 +16,8 @@ const ICONS = {
   wc: '<circle cx="8" cy="6" r="1.8"/><path d="M8 9v6M5.5 22l1-7M10.5 22l-1-7M5 12h6"/><circle cx="17" cy="6" r="1.8"/><path d="M14.5 22V15a2.2 2.2 0 0 1 4.4 0V22"/><path d="M14.5 12h4.4"/>',
   chevron: '<path d="M9 6l7 6-7 6"/>',
   logout: '<path d="M15 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h9"/><path d="M10 12h10m0 0-3-3m3 3-3 3"/>',
+  storno: '<circle cx="12" cy="12" r="8.5"/><path d="M6.5 6.5l11 11"/>',
+  refresh: '<path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4.5h-4.5M6 21v-4.5h4.5"/>',
 };
 
 function icon(name, size = 20, color = "currentColor", stroke = 1.6) {
@@ -178,6 +180,31 @@ function renderKarte() {
   `;
 }
 
+// ---- Stornos (rein statisch aus data.js) ----
+function renderStornos() {
+  const wrap = document.getElementById("view-stornos");
+  const stornos = (STORNOS || []).slice().reverse(); // neueste zuerst
+
+  wrap.innerHTML = `
+    <div class="eyebrow">Stornos heute</div>
+    ${stornos.length ? stornos.map(s => `
+      <div class="card">
+        <div class="row">
+          <div class="icon-circle" style="background:rgba(124,46,39,0.08); color:var(--bordeaux);">${icon("storno", 18, "#7C2E27")}</div>
+          <div>
+            <h3 class="title">Bediener ${escapeHtml(s.bedienerNr)}</h3>
+            <p class="desc">${escapeHtml(s.gericht)}${s.zeit ? " · " + escapeHtml(s.zeit) + " Uhr" : ""}</p>
+          </div>
+        </div>
+      </div>`).join("") : `
+      <div class="card"><p class="desc">Aktuell keine Stornos eingetragen.</p></div>`}
+  `;
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+}
+
 function renderInfos(account) {
   const wrap = document.getElementById("view-infos");
   wrap.innerHTML = `
@@ -233,6 +260,7 @@ function showApp(account) {
   renderHeader(account);
   renderHeute(account);
   renderKarte();
+  renderStornos();
   renderInfos(account);
   initTabs(account);
   switchTab("heute");
