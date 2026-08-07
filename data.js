@@ -41,18 +41,18 @@ const BOXEN = {
 // 2) FESTTAGE 2026 (07.–17.08.2026, laut Gäubodenvolksfest-Kalender)
 // -------------------------------------------------------------------
 // shifts: Schichtzeiten, die an diesem Tag gelten (für alle Teams gleich)
-// sonderaktion: Band/Programm-Highlight des Tages (aus eurem Serviceplan)
+// sonderaktion: Abendband/Programm-Highlight (offiziell von weckmann-zelt.de/abendevents/)
 const DAYS = [
-  { date: "2026-08-07", weekday: "Freitag",   shifts: [{ label: "Ganztags", time: "13:00" }], sonderaktion: "Gipfelstürmer" },
-  { date: "2026-08-08", weekday: "Samstag",   shifts: [{ label: "Ganztags", time: "09:00" }], sonderaktion: "Gewekinger" },
+  { date: "2026-08-07", weekday: "Freitag",   shifts: [{ label: "Ganztags", time: "13:00" }], sonderaktion: "Die Gipfelstürmer" },
+  { date: "2026-08-08", weekday: "Samstag",   shifts: [{ label: "Ganztags", time: "09:00" }], sonderaktion: "Gewekiner Buam+Madl" },
   { date: "2026-08-09", weekday: "Sonntag",   shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "10:30" }], sonderaktion: "Pröllergeisda" },
-  { date: "2026-08-10", weekday: "Montag",    shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "10:30" }], sonderaktion: "Menzl XXL" },
-  { date: "2026-08-11", weekday: "Dienstag",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Menzl" },
-  { date: "2026-08-12", weekday: "Mittwoch",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Kaasplattnrock" },
-  { date: "2026-08-13", weekday: "Donnerstag",shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Froschhaxn" },
-  { date: "2026-08-14", weekday: "Freitag",   shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Gewekinger" },
-  { date: "2026-08-15", weekday: "Samstag",   shifts: [{ label: "Ganztags", time: "09:00" }], sonderaktion: "Gipfelstürmer" },
-  { date: "2026-08-16", weekday: "Sonntag",   shifts: [{ label: "Ganztags", time: "08:00" }], sonderaktion: "Menzl" },
+  { date: "2026-08-10", weekday: "Montag",    shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "10:30" }], sonderaktion: "Menzl XXL - die Wiesn-Besetzung" },
+  { date: "2026-08-11", weekday: "Dienstag",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Kapelle Josef Menzl" },
+  { date: "2026-08-12", weekday: "Mittwoch",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Kasplattnrocker" },
+  { date: "2026-08-13", weekday: "Donnerstag",shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Froschhaxn Express" },
+  { date: "2026-08-14", weekday: "Freitag",   shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Gewekiner Buam+Madl" },
+  { date: "2026-08-15", weekday: "Samstag",   shifts: [{ label: "Ganztags", time: "09:00" }], sonderaktion: "Die Gipfelstürmer" },
+  { date: "2026-08-16", weekday: "Sonntag",   shifts: [{ label: "Ganztags", time: "08:00" }], sonderaktion: "Kapelle Josef Menzl" },
   { date: "2026-08-17", weekday: "Montag",    shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "16:00" }], sonderaktion: "Waidler Power" },
 ];
 
