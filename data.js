@@ -101,18 +101,21 @@ const SCHEDULE = {
 // -------------------------------------------------------------------
 // Auf der Website waren die Gerichte nur als Bild-PDF verfügbar, daher
 // hier erstmal Platzhalter – bitte mit den echten Gerichten befüllen.
+// Aus dem offiziellen Speisekarten-Flyer übernommen. An Tagen ohne
+// Eintrag im Flyer gibt es explizit kein Tagesgericht (nicht "wird ergänzt").
+const KEIN_TAGESGERICHT = "Heute gibt es kein Tagesgericht.";
 const TAGESGERICHT = {
-  "2026-08-07": "Wird noch ergänzt",
-  "2026-08-08": "Wird noch ergänzt",
-  "2026-08-09": "Wird noch ergänzt",
-  "2026-08-10": "Wird noch ergänzt",
-  "2026-08-11": "Wird noch ergänzt",
-  "2026-08-12": "Wird noch ergänzt",
-  "2026-08-13": "Wird noch ergänzt",
-  "2026-08-14": "Wird noch ergänzt",
-  "2026-08-15": "Wird noch ergänzt",
-  "2026-08-16": "Wird noch ergänzt",
-  "2026-08-17": "Wird noch ergänzt",
+  "2026-08-07": KEIN_TAGESGERICHT,
+  "2026-08-08": "Schweinesteak mit Schmorzwiebeln & Kartoffelsalat",
+  "2026-08-09": KEIN_TAGESGERICHT,
+  "2026-08-10": "Biergulasch mit Semmelknödel & Salat",
+  "2026-08-11": "Gemischter Braten von Kalb & Schwein mit Semmelknödel",
+  "2026-08-12": "Rinderschmorbraten in Pfefferrahmsoß mit Spätzle",
+  "2026-08-13": "Entengröstl mit Zwiebeln & angröst'n Knödeln",
+  "2026-08-14": "Sauerbraten mit Semmelknödel",
+  "2026-08-15": KEIN_TAGESGERICHT,
+  "2026-08-16": KEIN_TAGESGERICHT,
+  "2026-08-17": KEIN_TAGESGERICHT,
 };
 
 // -------------------------------------------------------------------
@@ -135,6 +138,27 @@ const WICHTIGE_INFOS = [
 // Wird ergänzt, sobald ihr die Details habt (2. Runde laut Absprache).
 const SONDERAKTION_DETAILS = {
   // "2026-08-10": "Menzl XXL Abend – Einlass ab 19 Uhr, große Bühne",
+};
+
+// -------------------------------------------------------------------
+// 6b) TAGESAKTIONEN ("Wos Außerg'wöhnlichs") – aus dem Speisekarten-Flyer
+// -------------------------------------------------------------------
+// Besondere Angebote an einzelnen Tagen, unabhängig vom Tagesgericht.
+// Ein Datum kann auch mehrere Aktionen haben (z. B. 17.08.).
+const TAGESAKTIONEN = {
+  "2026-08-09": [
+    { titel: "Burschen-Dog", zeit: "11–23 Uhr", text: "10l-Fassl Festbier + Brotzeitbrettl für den ganzen Tisch + 8 Armbändel + 8 Schnäpse ‚Hau mi Weck Mann' + Gutschein Foto-Automat", preis: "180 € (statt 282 € einzeln)" },
+  ],
+  "2026-08-11": [
+    { titel: "Kindertag – Knüller für die Kloana", zeit: "bis 19 Uhr", text: "Nudeln mit Tomatensoß & 0,5 l Orangenlimo", preis: "6,00 €" },
+  ],
+  "2026-08-16": [
+    { titel: "Frühschoppen", zeit: "10–15 Uhr", text: "Ein Paar Weißwürstl mit Breze, süßem Senf und 0,5 l Straubinger Weiße Original", preis: "12,50 €" },
+  ],
+  "2026-08-17": [
+    { titel: "Kindertag – Knüller für die Kloana", zeit: "bis 19 Uhr", text: "Nudeln mit Tomatensoß & 0,5 l Orangenlimo", preis: "6,00 €" },
+    { titel: "Da Hammer kommt zum Schluss", zeit: "", text: "Eine Maß + 1/2 Hendl vom Grill", preis: "18,90 €" },
+  ],
 };
 
 // -------------------------------------------------------------------

@@ -147,9 +147,10 @@ function renderHeute(account) {
   }
 
   const day = dayIdx >= 0 ? DAYS[dayIdx] : null;
-  const tagesgericht = day ? (TAGESGERICHT[day.date] || "Wird noch ergänzt") : "—";
+  const tagesgericht = day ? (TAGESGERICHT[day.date] || KEIN_TAGESGERICHT) : "—";
   const sonderaktion = day ? day.sonderaktion : "—";
   const sonderDetail = day ? (SONDERAKTION_DETAILS[day.date] || "Details folgen – wird kurzfristig ergänzt.") : "";
+  const aktionen = day ? (TAGESAKTIONEN[day.date] || []) : [];
 
   wrap.innerHTML = `
     ${devPickerHtml(dayIdx)}
@@ -163,6 +164,8 @@ function renderHeute(account) {
         <div><h3 class="title">Tagesgericht</h3><p class="desc">${tagesgericht}</p></div>
       </div>
     </div>
+    ${aktionen.length ? `<div class="eyebrow">Wos Außerg'wöhnlichs heute</div>` : ""}
+    ${aktionen.map(renderAktionCard).join("")}
     <div class="card">
       <div class="row">
         <div class="icon-circle" style="background:rgba(173,138,68,0.14); color:var(--messing);">${icon("star", 18, "#AD8A44")}</div>
@@ -218,6 +221,23 @@ function renderTeamOverviewCard(dayIdx, account) {
         </table>
       </div>
     </details>`;
+}
+
+// ---- Tagesaktionen ("Wos Außerg'wöhnlichs") – auffällige Karte ----
+function renderAktionCard(a) {
+  return `
+    <div class="card aktion-card">
+      <div class="row">
+        <div class="icon-circle" style="background:rgba(173,138,68,0.18); color:var(--messing);">${icon("star", 18, "#AD8A44")}</div>
+        <div style="flex:1;">
+          <div class="row" style="justify-content:space-between; align-items:flex-start;">
+            <h3 class="title">${a.titel}${a.zeit ? ` <span class="aktion-zeit">· ${a.zeit}</span>` : ""}</h3>
+            ${a.preis ? `<span class="aktion-preis">${a.preis}</span>` : ""}
+          </div>
+          <p class="desc">${a.text}</p>
+        </div>
+      </div>
+    </div>`;
 }
 
 function devPickerHtml(dayIdx) {

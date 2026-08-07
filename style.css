@@ -133,6 +133,11 @@ p.desc { font-size: 13px; margin: 0; color: var(--text-mute); line-height: 1.45;
 
 .hidden { display: none !important; }
 
+/* ---------- Tagesaktionen ("Wos Außerg'wöhnlichs") ---------- */
+.aktion-card { border: 1.4px solid var(--messing); background: linear-gradient(180deg, #FFFDF7 0%, #FBF3E0 100%); }
+.aktion-zeit { font-weight: 400; color: var(--text-mute); font-size: 12.5px; }
+.aktion-preis { flex-shrink: 0; background: var(--messing); color: #fff; font-weight: 700; font-size: 12.5px; padding: 4px 10px; border-radius: 20px; margin-left: 10px; white-space: nowrap; }
+
 /* ---------- Team-Legende auf der Login-Seite ---------- */
 .team-legend { margin-top: 8px; border-top: 1px solid var(--linie); padding-top: 18px; }
 .team-legend-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-mute); text-align: center; margin-bottom: 12px; }
