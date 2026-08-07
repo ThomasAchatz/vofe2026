@@ -27,6 +27,16 @@
       <button class="btn" id="login-btn">Anmelden</button>
       <div class="hint">Dein Code steht auf deinem Helfer-Ausweis,<br>z. B. <b>ROT3</b> oder <b>BOX1</b></div>
       <div class="footer-note">Frag deinen Zeltmeister, falls dein Code nicht funktioniert.</div>
+      <div class="team-legend" id="team-legend"></div>
+    </div>
+  </div>
+
+  <!-- ===================== TEAM-WECHSEL DROPDOWN ===================== -->
+  <div id="team-switch-overlay" class="switch-overlay hidden">
+    <div class="switch-sheet">
+      <div class="switch-sheet-title">Team wechseln</div>
+      <div id="team-switch-list"></div>
+      <button class="btn" id="team-switch-close" style="background:transparent; color:var(--text-mute); margin-top:8px;">Abbrechen</button>
     </div>
   </div>
 
@@ -41,7 +51,7 @@
             <div class="brand-team" id="brand-team">–</div>
           </div>
         </div>
-        <div class="badge" id="brand-badge">–</div>
+        <button class="badge" id="brand-badge">–</button>
       </div>
     </div>
 

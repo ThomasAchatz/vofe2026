@@ -59,6 +59,54 @@ function getCurrentDayIndex() {
 function renderHeader(account) {
   document.getElementById("brand-team").textContent = account.type === "team" ? account.name : account.name;
   document.getElementById("brand-badge").textContent = account.code.toUpperCase();
+  const badge = document.getElementById("brand-badge");
+  badge.onclick = () => openTeamSwitch(account);
+}
+
+// ---- Team-Legende auf der Login-Seite ----
+function renderTeamLegend() {
+  const el = document.getElementById("team-legend");
+  if (!el) return;
+  const rows = Object.entries(TEAMS).map(([code, team]) => `
+    <div class="team-legend-row">
+      <span class="team-legend-name">${team.name}</span>
+      <span class="team-legend-code">${code.toUpperCase()}</span>
+    </div>`).join("");
+  el.innerHTML = `
+    <div class="team-legend-title">Welches Team hat welchen Code?</div>
+    ${rows}
+    <div class="hint" style="margin-top:14px; margin-bottom:0;">Meldet euch mit dem Code an, der eurem Team zugeordnet ist – z. B. meldet sich <b>Team Fuchs</b> mit dem Code an, der hier neben "Team Fuchs" steht.</div>
+  `;
+}
+
+// ---- Team-Wechsel (Klick auf die Badge oben rechts) ----
+function openTeamSwitch(currentAccount) {
+  const overlay = document.getElementById("team-switch-overlay");
+  const list = document.getElementById("team-switch-list");
+  list.innerHTML = Object.entries(TEAMS).map(([code, team]) => {
+    const isCurrent = currentAccount.type === "team" && currentAccount.code === code;
+    return `
+      <div class="switch-item ${isCurrent ? "current" : ""}" data-code="${code}">
+        <span class="switch-item-name">${team.name}</span>
+        <span class="switch-item-code">${code.toUpperCase()}</span>
+      </div>`;
+  }).join("");
+  list.querySelectorAll(".switch-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const code = item.dataset.code;
+      const account = resolveAccount(code);
+      if (account) {
+        setSession(account.code);
+        closeTeamSwitch();
+        showApp(account);
+      }
+    });
+  });
+  overlay.classList.remove("hidden");
+}
+
+function closeTeamSwitch() {
+  document.getElementById("team-switch-overlay").classList.add("hidden");
 }
 
 function renderHeute(account) {
@@ -105,6 +153,7 @@ function renderHeute(account) {
 
   wrap.innerHTML = `
     ${devPickerHtml(dayIdx)}
+    ${renderTeamOverviewCard(dayIdx, account)}
     ${heroHtml}
     <div class="eyebrow">Wichtig heute</div>
     ${WICHTIGE_INFOS.slice(0, 1).map(infoCard).join("")}
@@ -135,6 +184,37 @@ function renderHeute(account) {
     });
   });
   loadWetter();
+}
+
+// ---- Team-Übersicht: wer hat heute/morgen welchen Bereich ----
+function renderTeamOverviewCard(dayIdx, account) {
+  if (dayIdx < 0) return ""; // außerhalb des Festzeitraums nicht sinnvoll
+  const todayDay = DAYS[dayIdx];
+  const tomorrowDay = dayIdx + 1 < DAYS.length ? DAYS[dayIdx + 1] : null;
+
+  const rows = Object.entries(TEAMS).map(([code, team]) => {
+    const sched = SCHEDULE[team.teamKey];
+    const posHeute = sched.positions[dayIdx];
+    const posMorgen = tomorrowDay ? sched.positions[dayIdx + 1] : "–";
+    const isYou = account.type === "team" && account.code === code;
+    return `
+      <tr class="${isYou ? "is-you" : ""}">
+        <td class="team-name">${team.name}${isYou ? " (du)" : ""}</td>
+        <td>${posHeute}</td>
+        <td>${posMorgen}</td>
+      </tr>`;
+  }).join("");
+
+  return `
+    <div class="card">
+      <h3 class="title" style="margin-bottom:10px;">Alle Teams – ${todayDay.weekday} &amp; ${tomorrowDay ? tomorrowDay.weekday : "danach"}</h3>
+      <div style="overflow-x:auto;">
+        <table class="overview-table">
+          <thead><tr><th>Team</th><th>Heute</th><th>Morgen</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
 }
 
 function devPickerHtml(dayIdx) {
@@ -252,6 +332,7 @@ function initTabs(account) {
 function showLogin() {
   document.getElementById("login-screen").classList.remove("hidden");
   document.getElementById("app-screen").classList.add("hidden");
+  renderTeamLegend();
 }
 
 function showApp(account) {
@@ -284,6 +365,10 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("login-btn").addEventListener("click", tryLogin);
   document.getElementById("code-input").addEventListener("keydown", e => {
     if (e.key === "Enter") tryLogin();
+  });
+  document.getElementById("team-switch-close").addEventListener("click", closeTeamSwitch);
+  document.getElementById("team-switch-overlay").addEventListener("click", e => {
+    if (e.target.id === "team-switch-overlay") closeTeamSwitch();
   });
 
   const session = getSession();
