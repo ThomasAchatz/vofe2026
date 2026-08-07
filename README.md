@@ -1,6 +1,6 @@
 # Zelt Weckmann – Helfer-App
 
-Statische Web-App, kein Backend, kein Build-Schritt.  Läuft direkt aus  
+Statische Web-App, kein Backend, kein Build-Schritt.  Läuft direkt aus   
 diesem Repo über GitHub Pages (oder jeden anderen Static Host).
 
 ## Dateien in diesem Repo
