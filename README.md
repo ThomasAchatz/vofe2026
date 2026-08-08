@@ -20,6 +20,8 @@ manifest.json        Für "Zum Home-Bildschirm hinzufügen"
 sw.js                Offline-Caching fürs Homescreen-Icon
 speisekarte.pdf       Durch echte PDF ersetzen (fehlt aktuell im Repo!)
 spickzettel.pdf       Durch echte PDF ersetzen
+reservierungen.pdf     Sitzplan mit Tisch-Reservierungen – JEDEN ABEND
+                       mit dem aktuellen Sitzplan überschreiben & pushen
 icon-192.png, icon-512.png   App-Icon
 ```
 
@@ -38,6 +40,24 @@ Alles Tages-Aktuelle steht in **`data.js`**, z. B.:
   Rein statisch: du trägst abends ein, was storniert wurde, committest
   die Datei – neueste Einträge erscheinen automatisch oben in der App.
   Kein Login, kein Formular, kein Cloud-Speicher nötig.
+
+**Reservierungen (Sitzplan pro Abend):** Kein data.js-Edit nötig – einfach
+das Foto/den Scan des Sitzplans mit diesem Namen ins Repo-Root hochladen:
+
+```
+reservierungen-JJJJ-MM-TT.jpg
+```
+
+z. B. für Freitag 07.08.2026: `reservierungen-2026-08-07.jpg`. Die App
+sucht die passende Datei automatisch für den aktuellen Tag und zeigt
+"noch kein Sitzplan hochgeladen", falls sie fehlt. Lädst du lieber PNGs
+oder PDFs hoch, `extension` in `RESERVIERUNGEN_CONFIG` (in `data.js`)
+entsprechend anpassen.
+- `RESERVIERUNGEN` – Sitzplan-Fotos für den Abend im neuen Reiter
+  "Reservierungen". Einfach `stand` (Anzeigetext) und die Bilddateien in
+  `bilder` täglich aktualisieren – entweder bestehende Dateien
+  (`reservierung-1.jpg`, `reservierung-2.jpg` …) mit neuen Fotos
+  überschreiben, oder neue Dateinamen eintragen.
 
 Einfach die Datei bearbeiten, committen, pushen – fertig.
 

@@ -91,6 +91,7 @@ p.desc { font-size: 13px; margin: 0; color: var(--text-mute); line-height: 1.45;
 
 /* ---------- Downloads ---------- */
 .download-card { text-align: center; padding: 28px 18px; }
+.reservierung-img { width: 100%; display: block; border-radius: 10px; }
 .download-icon { margin: 0 auto 14px auto; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
 
 /* ---------- Tab bar ---------- */
@@ -132,6 +133,10 @@ p.desc { font-size: 13px; margin: 0; color: var(--text-mute); line-height: 1.45;
 .dev-picker select { font-size: 12px; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--linie); }
 
 .hidden { display: none !important; }
+
+/* ---------- Reservierungen (Sitzplan-Bilder) ---------- */
+.reservierung-img-card { display: block; padding: 8px; }
+.reservierung-img { width: 100%; display: block; border-radius: 8px; }
 
 /* ---------- Tagesaktionen ("Wos Außerg'wöhnlichs") ---------- */
 .aktion-card { border: 1.4px solid var(--messing); background: linear-gradient(180deg, #FFFDF7 0%, #FBF3E0 100%); }

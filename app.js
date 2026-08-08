@@ -184,6 +184,7 @@ function renderHeute(account) {
       if (e.target.value) sessionStorage.setItem("weckmann_dev_day", e.target.value);
       else sessionStorage.removeItem("weckmann_dev_day");
       renderHeute(account);
+      renderReservierungen();
     });
   });
   loadWetter();
@@ -264,6 +265,11 @@ function infoCard(info) {
     </div>`;
 }
 
+function formatDatum(iso) {
+  const [y, m, d] = iso.split("-");
+  return `${d}.${m}.${y}`;
+}
+
 function renderKarte() {
   const wrap = document.getElementById("view-karte");
   wrap.innerHTML = `
@@ -306,6 +312,52 @@ function renderStornos() {
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+}
+
+// ---- Reservierungen (Sitzplan-Foto/PDF pro Abend, rein statisch) ----
+function renderReservierungen() {
+  const wrap = document.getElementById("view-reservierungen");
+  const dayIdx = getCurrentDayIndex();
+  const day = dayIdx >= 0 ? DAYS[dayIdx] : null;
+
+  if (!day) {
+    wrap.innerHTML = `
+      <div class="eyebrow">Reservierungen</div>
+      <div class="card"><p class="desc">Außerhalb des Festzeitraums – wähle im "Heute"-Tab testweise einen Tag aus, um die Ansicht zu prüfen.</p></div>`;
+    return;
+  }
+
+  const ext = (RESERVIERUNGEN_CONFIG && RESERVIERUNGEN_CONFIG.extension) || "jpg";
+  const isImage = ["jpg", "jpeg", "png"].includes(ext.toLowerCase());
+  const src = `reservierungen-${day.date}.${ext}`;
+  const subtitle = `${day.weekday}, ${formatDatum(day.date)} · Abend · ${day.sonderaktion}`;
+
+  wrap.innerHTML = `
+    <div class="eyebrow">Reservierungen – ${subtitle}</div>
+    <div class="card" id="reservierung-card" style="${isImage ? "padding:10px;" : ""}">
+      ${isImage
+        ? `<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="Sitzplan ${day.date}" class="reservierung-img" id="reservierung-img"></a>`
+        : `<div class="download-card">
+             <div class="download-icon" style="background:rgba(31,58,44,0.08); color:var(--tanne);">${icon("doc", 22, "#1F3A2C")}</div>
+             <h3 class="title serif" style="font-size:17px;">Sitzplan &amp; Reservierungen</h3>
+             <p class="desc" style="margin-bottom:16px;">${subtitle}</p>
+             <a class="btn" href="${src}" target="_blank" rel="noopener">PDF öffnen ${icon("chevron", 15, "#fff", 2)}</a>
+           </div>`}
+    </div>
+    <div class="card" id="reservierung-fallback" style="display:none;">
+      <p class="desc">Für heute Abend ist noch kein Sitzplan hochgeladen (erwartet: <b>${src}</b>).</p>
+    </div>
+    ${isImage ? `<p class="desc" id="reservierung-hint" style="text-align:center;">Zum Vergrößern antippen</p>` : ""}
+  `;
+
+  if (isImage) {
+    document.getElementById("reservierung-img").addEventListener("error", () => {
+      document.getElementById("reservierung-card").style.display = "none";
+      document.getElementById("reservierung-fallback").style.display = "block";
+      const hint = document.getElementById("reservierung-hint");
+      if (hint) hint.style.display = "none";
+    });
+  }
 }
 
 function renderInfos(account) {
@@ -364,6 +416,7 @@ function showApp(account) {
   renderHeader(account);
   renderHeute(account);
   renderKarte();
+  renderReservierungen();
   renderStornos();
   renderInfos(account);
   initTabs(account);

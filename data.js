@@ -170,6 +170,18 @@ const DOWNLOADS = {
 };
 
 // -------------------------------------------------------------------
+// 7b) RESERVIERUNGEN (Sitzplan für den Abend)
+// -------------------------------------------------------------------
+// stand: Anzeigetext oben im Reiter, bitte jeden Abend aktualisieren.
+// bilder: Liste der Sitzplan-Fotos/Scans. Bei euch meist 2 Teile (linker &
+// rechter Bereich) – einfach die Dateien überschreiben (gleicher Name)
+// oder neue Dateinamen eintragen, falls es mal mehr/weniger Teile sind.
+const RESERVIERUNGEN = {
+  stand: "Freitag, 07.08.2026 – Abend",
+  bilder: ["reservierung-1.jpg", "reservierung-2.jpg"],
+};
+
+// -------------------------------------------------------------------
 // 8) WETTER (Open-Meteo, kostenlos & ohne API-Key) – Straubing
 // -------------------------------------------------------------------
 const WETTER_CONFIG = {
@@ -187,3 +199,19 @@ const STORNOS = [
   // { bedienerNr: 24, gericht: "Schweinebraten", zeit: "14:30" },
   // { bedienerNr: 7,  gericht: "Wiener mit Kartoffelsalat", zeit: "18:05" },
 ];
+
+// -------------------------------------------------------------------
+// 10) RESERVIERUNGEN (Sitzplan-Foto/PDF für den Abend)
+// -------------------------------------------------------------------
+// Einfach jeden Abend ein Foto/Scan des Sitzplans nach diesem Muster
+// benennen und ins Repo-Root hochladen:
+//
+//   reservierungen-JJJJ-MM-TT.jpg
+//
+// z. B. für Freitag 07.08.2026: reservierungen-2026-08-07.jpg
+// Kein Code-Edit nötig – die App sucht die passende Datei für den
+// aktuellen Tag automatisch. "extension" unten anpassen, falls du
+// lieber .png oder .pdf hochlädst.
+const RESERVIERUNGEN_CONFIG = {
+  extension: "jpg",
+};
