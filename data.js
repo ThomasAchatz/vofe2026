@@ -128,7 +128,7 @@ const WICHTIGE_INFOS = [
   { icon: "user", title: "Zeltmeister", text: "Ansprechpartner für Fragen & Notfälle – Kontakt: wird noch ergänzt" },
   { icon: "wc", title: "WC & Pausenraum", text: "Lage: wird noch ergänzt" },
   { icon: "info", title: "Fundbüro", text: "wird noch ergänzt" },
-  { icon: "info", title: "Jugendschutz", text: "Ausweiskontrolle beim Alkoholausschank beachten." },
+  { icon: "info", title: "Jugendschutz", text: "Ausweiskontrolle beim Alkoholausschank beachten – Merkzettel unter Downloads." },
 ];
 
 // -------------------------------------------------------------------
@@ -167,6 +167,7 @@ const TAGESAKTIONEN = {
 const DOWNLOADS = {
   speisekarte: "speisekarte.pdf",
   spickzettel: "spickzettel.pdf",
+  jugendschutz: "jugendschutz.pdf",
 };
 
 // -------------------------------------------------------------------
@@ -196,8 +197,17 @@ const WETTER_CONFIG = {
 // committest die Datei, fertig. Kein Login/Formular in der App nötig.
 // bedienerNr: 1-60, gericht: freier Text, zeit: optional (z.B. "14:30")
 const STORNOS = [
-  // { bedienerNr: 24, gericht: "Schweinebraten", zeit: "14:30" },
-  // { bedienerNr: 7,  gericht: "Wiener mit Kartoffelsalat", zeit: "18:05" },
+  { bedienerNr: 3, gericht: "3x 200g Schweiners" },
+  { bedienerNr: 3, gericht: "3x Brezn" },
+  { bedienerNr: 3, gericht: "Brotzeitbrettl" },
+  { bedienerNr: 13, gericht: "Schweiners" },
+  { bedienerNr: 24, gericht: "Pulled" },
+  { bedienerNr: 21, gericht: "Brezn" },
+  { bedienerNr: 1, gericht: "Brezn" },
+  { bedienerNr: 11, gericht: "Brezn" },
+  { bedienerNr: 11, gericht: "Gigal" },
+  { bedienerNr: 32, gericht: "Brezn" },
+  { bedienerNr: 23, gericht: "Kloß" },
 ];
 
 // -------------------------------------------------------------------

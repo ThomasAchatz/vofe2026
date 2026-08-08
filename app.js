@@ -286,6 +286,12 @@ function renderKarte() {
       <p class="desc" style="margin-bottom:16px;">Kurzübersicht für den Ausschank</p>
       <a class="btn" href="${DOWNLOADS.spickzettel}" target="_blank" rel="noopener">PDF öffnen ${icon("chevron", 15, "#fff", 2)}</a>
     </div>
+    <div class="card download-card">
+      <div class="download-icon" style="background:rgba(31,58,44,0.08); color:var(--tanne);">${icon("medkit", 22, "#1F3A2C")}</div>
+      <h3 class="title serif" style="font-size:17px;">Jugendschutz-Merkzettel</h3>
+      <p class="desc" style="margin-bottom:16px;">Altersgrenzen & Ausschankzeiten auf einen Blick</p>
+      <a class="btn" href="${DOWNLOADS.jugendschutz}" target="_blank" rel="noopener">PDF öffnen ${icon("chevron", 15, "#fff", 2)}</a>
+    </div>
   `;
 }
 
