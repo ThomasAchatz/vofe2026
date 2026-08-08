@@ -197,17 +197,26 @@ const WETTER_CONFIG = {
 // committest die Datei, fertig. Kein Login/Formular in der App nötig.
 // bedienerNr: 1-60, gericht: freier Text, zeit: optional (z.B. "14:30")
 const STORNOS = [
-  { bedienerNr: 3, gericht: "3x 200g Schweiners" },
+  { bedienerNr: 1, gericht: "Brezn" },
+  { bedienerNr: 1, gericht: "Kloß m. Soß" },
+  { bedienerNr: 3, gericht: "3x 200g Käse" },
+  { bedienerNr: 3, gericht: "Schweiners" },
   { bedienerNr: 3, gericht: "3x Brezn" },
   { bedienerNr: 3, gericht: "Brotzeitbrettl" },
-  { bedienerNr: 13, gericht: "Schweiners" },
-  { bedienerNr: 24, gericht: "Pulled" },
-  { bedienerNr: 21, gericht: "Brezn" },
-  { bedienerNr: 1, gericht: "Brezn" },
-  { bedienerNr: 11, gericht: "Brezn" },
   { bedienerNr: 11, gericht: "Gigal" },
-  { bedienerNr: 32, gericht: "Brezn" },
+  { bedienerNr: 12, gericht: "Spanferkel" },
+  { bedienerNr: 13, gericht: "Schweiners" },
+  { bedienerNr: 21, gericht: "Brezn" },
   { bedienerNr: 23, gericht: "Kloß" },
+  { bedienerNr: 24, gericht: "Pulled" },
+  { bedienerNr: 25, gericht: "Breze" },
+  { bedienerNr: 27, gericht: "Brezn" },
+  { bedienerNr: 35, gericht: "Spanferkel" },
+  { bedienerNr: 35, gericht: "2x Spanferkel" },
+  { bedienerNr: 35, gericht: "Bayerischer Wurstsalat" },
+  { bedienerNr: 35, gericht: "Pulled" },
+  { bedienerNr: 41, gericht: "Schweizer Wurstsalat" },
+  { bedienerNr: 42, gericht: "Pulled" },
 ];
 
 // -------------------------------------------------------------------

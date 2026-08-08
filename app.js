@@ -298,7 +298,7 @@ function renderKarte() {
 // ---- Stornos (rein statisch aus data.js) ----
 function renderStornos() {
   const wrap = document.getElementById("view-stornos");
-  const stornos = (STORNOS || []).slice().reverse(); // neueste zuerst
+  const stornos = STORNOS || []; // Reihenfolge wie in data.js (aufsteigend nach Bedienernummer)
 
   wrap.innerHTML = `
     <div class="eyebrow">Stornos heute</div>
