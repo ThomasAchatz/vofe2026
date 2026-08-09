@@ -197,6 +197,8 @@ const WETTER_CONFIG = {
 // committest die Datei, fertig. Kein Login/Formular in der App nötig.
 // bedienerNr: 1-60, gericht: freier Text, zeit: optional (z.B. "14:30")
 const STORNOS = [
+  { bedienerNr: 1, gericht: "Brezn" },
+  { bedienerNr: 1, gericht: "Kloß m. Soß" },
   { bedienerNr: 3, gericht: "3x 200g Käse" },
   { bedienerNr: 3, gericht: "Schweiners" },
   { bedienerNr: 3, gericht: "3x Brezn" },
@@ -230,5 +232,5 @@ const STORNOS = [
 // aktuellen Tag automatisch. "extension" unten anpassen, falls du
 // lieber .png oder .pdf hochlädst.
 const RESERVIERUNGEN_CONFIG = {
-  extension: "jpg",
+  extension: "pdf",
 };
