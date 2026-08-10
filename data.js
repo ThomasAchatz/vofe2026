@@ -232,5 +232,5 @@ const STORNOS = [
 // aktuellen Tag automatisch. "extension" unten anpassen, falls du
 // lieber .png oder .pdf hochlädst.
 const RESERVIERUNGEN_CONFIG = {
-  extension: "pdf",
+  extension: "jpg",
 };
