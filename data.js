@@ -48,7 +48,7 @@ const DAYS = [
   { date: "2026-08-09", weekday: "Sonntag",   shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "10:30" }], sonderaktion: "Pröllergeisda" },
   { date: "2026-08-10", weekday: "Montag",    shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "10:30" }], sonderaktion: "Menzl XXL - die Wiesn-Besetzung" },
   { date: "2026-08-11", weekday: "Dienstag",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Kapelle Josef Menzl" },
-  { date: "2026-08-12", weekday: "Mittwoch",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Kasplattnrocker" },
+  { date: "2026-08-12", weekday: "Mittwoch",  shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Kasplattenrocker" },
   { date: "2026-08-13", weekday: "Donnerstag",shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Froschhaxn Express" },
   { date: "2026-08-14", weekday: "Freitag",   shifts: [{ label: "Früh", time: "09:00" }, { label: "Spät", time: "15:00" }], sonderaktion: "Gewekiner Buam+Madl" },
   { date: "2026-08-15", weekday: "Samstag",   shifts: [{ label: "Ganztags", time: "09:00" }], sonderaktion: "Die Gipfelstürmer" },
